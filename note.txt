@@ -1,0 +1,71 @@
+entry point when creating npm init : server.js
+
+npm install redux react-redux redux-thunk
+
+body parser : handle data that comes in, being able to read it
+
+concurrectly : run multiple server :
+ "scripts": {
+    "client-install":"npm install --prefix client",   --> you won't have node moidule, with that line, you can rune npm client install , evertying will be installed ! 
+    "start":"node server.js",
+    "server":"nodemon server.js",
+	//////		run npm start inside client folder
+    "client:":"cd client && npm start",
+/// CAREFUL YOU NEED TO RESPECT THE SPACES
+    "dev":"concurrently \"npm run server\" \"npm run client:\""
+  },
+
+and npm run dev
+
+-------------
+to connect to api mongodb
+// DB config  //
+const db = require('./config/keys').mongoURI
+
+// connect  to Mongo DB //
+mongoose
+    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('MondoGB Connected ...'))
+    .catch(err => console.log(err))
+
+-------------------
+
+When creating models, always put capitalfirttletter
+
+-------
+
+create react app in that folder : npx create-react-app . 
+keep packagejson separate
+
+  "proxy":"http://localhost:5000", in packageJson so we don't have to add it everytime
+
+
+------------------
+
+Check in ShoppingLIst, setItems !! that's how you add naturraly to an array without bugs !
+
+            onClick={() => {const name = prompt("Enter Item")
+            if(name) {
+                setitems([...items, {id:uuidv4(),name}])}
+            }}
+
+<Button className="remove-btn" color="danger" size="sm" onClick={() => setitems(items.filter(item => item.id !== id))}>&times;</Button>
+
+
+More about redux in shoppling list
+
+-----------------------
+
+
+You will have issues whil fetching cause blocked, use cors 
+app.use(cors())
+
+---
+
+ever since we had to use the api , we had to add dispatch everytime now
+
+---------
+
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false" for heroku packagejson
+
+check serverjs too

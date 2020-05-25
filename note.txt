@@ -66,6 +66,6 @@ ever since we had to use the api , we had to add dispatch everytime now
 
 ---------
 
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false" for heroku packagejson
+        "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
 
 check serverjs too

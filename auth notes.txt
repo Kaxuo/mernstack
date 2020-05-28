@@ -1,0 +1,5 @@
+bcriptjs for password
+
+jsonwebtoken need to be installed for token
+
+config to hide keys , check in default ("sl_myJwtSecret" can be whatever you want)

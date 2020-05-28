@@ -1,5 +1,43 @@
 
-.remove-btn{
-    margin-right: 0.5rem;
+
+
+body{
+    background: #232741;
+  }
+  
+
+.contain{
+    margin-top:7%;
+    width:36%;
+    z-index: 1;
 }
+
+@media only screen and (max-width: 1200px) {
+    .contain {
+      width: 60%
+    }
+  }
+
+@media only screen and (max-width: 800px) {
+    .contain {
+      width: 75%
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .contain {
+      width: 100%
+    }
+  }
+
+.fade-exit {
+     opacity:1;
+ }
+
+ .fade-exit-active {
+     opacity:0;
+     transition:opacity 500ms ease-in;
+ }
+
+
 

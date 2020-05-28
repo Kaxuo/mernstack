@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-var cors = require('cors')
+
+// We added auth as a second parameter for delete and post , that means they will need to be logged in to add or delete
+const auth = require('../../middleware/auth')
 // Since we're using router, we use router, if we were in the index or serverjs , then we would use app
 
 // Item Model //
@@ -10,15 +12,13 @@ const Item = require('../../models/Item')
 router.get('/', (req,res) => {
     // fetch items , take the model first(Item)
     Item.find()
-        .sort({date:-1})
         // Promise, we get the items and since they're in json , we use res.json and then pass in the items
         .then(items => res.json(items))
-
 })
 
 
 // Add items //
-router.post('/', (req,res) => {
+router.post('/', auth, (req,res) => {
     // new model,with the name of the model
     const newItem = new Item({
         name:req.body.name
@@ -29,7 +29,7 @@ router.post('/', (req,res) => {
 
 
 // Delete item, will need ID //
-router.delete('/:id', (req,res) => {
+router.delete('/:id', auth, (req,res) => {
     // find the item first
     Item.findById(req.params.id)
         .then(item => item.remove().then(() => res.json({success:true})))
